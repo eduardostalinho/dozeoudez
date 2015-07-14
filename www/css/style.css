@@ -29,7 +29,8 @@
 }
 
 .scoreboard .clock{
-  font-size: 1.4em;
+  font-size: 2em;
+  margin: 20px;
 }
 
 .scoreboard .points { color: #ccc; }
