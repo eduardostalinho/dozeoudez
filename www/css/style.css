@@ -21,11 +21,15 @@
   padding: 10px 0px;
 }
 
-.scoreboard .team{
-  font-size: 1.4em;
+.scoreboard .team {
+  font-size: 1.8em;
   padding-bottom: 10px;
   text-align: center;
   color: black;
+}
+
+.scoreboard .points{
+  font-size: 1.6em;
 }
 
 .scoreboard .clock{
