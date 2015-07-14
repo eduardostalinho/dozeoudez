@@ -53,7 +53,6 @@ angular.module("dozeoudez.controllers")
 
   $scope.score = function (team, points) {
     $scope.game.score(team, points);
-    $scope.closeModal();
   };
 
   $scope.closeModal = function() {
