@@ -16,8 +16,9 @@ angular.module("dozeoudez.services")
 
     self.isTimesUp = isTimesUp;
 
+    // tick logic is depending on game. is this it?
     self._tick = function _tick () {
-      if(isTimesUp()) {
+      if(isTimesUp() && (game.homeTeam.points !== game.awayTeam.points)) {
         game.finish();
         return;
       }
@@ -34,8 +35,12 @@ angular.module("dozeoudez.services")
     };
 
     self.toString = function () {
-      var ms = self.time.asMilliseconds();
-      return moment(ms).format("mm:ss");
+      var ms = Math.abs(self.time.asMilliseconds());
+      asString = moment(ms).format("mm:ss");
+      if (self.time.asMilliseconds() < 0) {
+        asString = '-' + asString;
+      }
+      return asString;
     };
 
     self.toJSON = function () {

@@ -46,9 +46,25 @@ describe("GameClock", function () {
         expect(subject.timer).to.equal(timer);
       });
 
-      context("when times up", function () {
+      context("when times up and game is tied", function () {
         beforeEach(function () {
           subject.time = moment.duration(0, "seconds");
+          game.awayTeam.points = 0;
+          game.homeTeam.points = 0;
+        });
+
+        it("game is not finished", function () {
+          sinon.stub(game, "finish");
+          subject.start();
+          expect(game.finish).to.have.not.been.called;
+        });
+      });
+
+      context("when times up and game is not tied", function () {
+        beforeEach(function () {
+          subject.time = moment.duration(0, "seconds");
+          game.awayTeam.points = 2;
+          game.homeTeam.points = 0;
         });
 
         it("finishes the game", function () {

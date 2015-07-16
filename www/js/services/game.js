@@ -46,7 +46,9 @@ angular.module("dozeoudez.services")
 
     var hasFinished = function () {
       try {
-        return self.clock.isTimesUp() || hasAWinner();
+        return ((self.clock.isTimesUp() &&
+                self.homeTeam.points !== self.awayTeam.points)) ||
+                hasAWinner();
       } catch (e) {
         return false;
       }

@@ -237,7 +237,23 @@ describe("Game", function () {
         });
       });
 
-      context("when game is running and times up", function () {
+
+      context("when times up and teams are tied", function () {
+        it("does not finish the game", function () {
+          var freezedMoment = moment("2014-10-18 19:30", "YYYY-MM-DD HH:mm");
+          sinon.useFakeTimers(freezedMoment.toDate().getTime());
+          var subject = new model({
+            status: "running",
+            startedAt: "2014-10-18T18:45:02",
+            clock: { time: "00:09:59"},
+          });
+          subject.awayTeam.points = 8;
+          subject.homeTeam.points = 8;
+          subject.resume();
+          expect(subject.status).to.equal("running");
+        });
+      });
+      context("when times up and team are not tied", function () {
         it("finishes the game", function () {
           var freezedMoment = moment("2014-10-18 19:30", "YYYY-MM-DD HH:mm");
           sinon.useFakeTimers(freezedMoment.toDate().getTime());
@@ -246,6 +262,8 @@ describe("Game", function () {
             startedAt: "2014-10-18T18:45:02",
             clock: { time: "00:09:59"},
           });
+          subject.awayTeam.points = 8;
+          subject.homeTeam.points = 10;
           subject.resume();
           expect(subject.status).to.equal("finished");
         });
