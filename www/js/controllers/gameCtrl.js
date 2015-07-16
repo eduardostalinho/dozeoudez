@@ -1,6 +1,6 @@
 angular.module("dozeoudez.controllers")
 
-.controller("GameCtrl", function($scope, Game, $timeout, $ionicModal) {
+.controller("GameCtrl", function($scope, Game, $timeout) {
   var game;
 
   // TODO move this code to game
@@ -35,29 +35,7 @@ angular.module("dozeoudez.controllers")
     $scope.game = game;
   });
 
-  //modal
-
-  $ionicModal.fromTemplateUrl("contact-modal.html", {
-    scope: $scope,
-    animation: "fade-in"
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  $scope.openModal = function(team) {
-    $scope.modal.team = team;
-    $scope.modal.show();
-  };
-
   $scope.score = function (team, points) {
     $scope.game.score(team, points);
   };
-
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
 });
