@@ -5,7 +5,7 @@ angular.module("dozeoudez.controllers")
 
   // TODO move this code to game
   var isWinner = function (team) {
-    return team.points >= 12;
+    return team.points >= $scope.game.MAX_POINTS;
   };
 
   var finishByWinner = function () {
