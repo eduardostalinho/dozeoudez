@@ -14,8 +14,6 @@ angular.module("dozeoudez.controllers")
       $scope.game.finish();
     }
   };
-  //
-
   $scope.playPause = function () {
     if ($scope.game.status == "running") {
       $scope.game.pause();

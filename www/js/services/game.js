@@ -12,7 +12,7 @@ angular.module("dozeoudez.services")
 
     var MAX_POINTS = 12;
 
-    function init() {
+    var init = function () {
       db.load("Game", self, attrs);
       db.changes({ since: "now", include_docs: true, live: true }).on('change', function(change) {
         console.log(change);
