@@ -11,108 +11,30 @@
 
   <ion-content>
       <div class="row row-center scoreboard">
-        <a class="col2 col-33 team" href="#score" ng-click="openModal(game.homeTeam)">
-          <i class="ion-ios7-basketball-outline"></i>
-          <span class="points">{{game.homeTeam.points}}</span>
-        </a>
-        <div class="col1 col-33 clock">
+        <div class="col clock">
           {{game.clock.toString()}}
         </div>
-        <a class="col2 col-33 team" href="#score" ng-click="openModal(game.awayTeam)">
-          <span class="points">{{game.awayTeam.points}}</span>
-          <i class="ion-ios7-basketball"></i>
-        </a>
       </div>
-      <div class="list">
-        <div class="item item-divider item-player-divider">
-          <div id="players-divider-title">Players</div>
+      <div class="row row-center scoreboard">
+        <span class="col col-50 points">{{game.homeTeam.points}}</span>
+        <div class="col col-50">
+          <a class="col-33 team" ng-click="score(game.homeTeam, 2)">
+            <i class="icon icon_ios-basketball-outline-2" ></i>
+          </a>
+          <a class="col-33 team" ng-click="score(game.homeTeam, 3)">
+            <i class="icon icon_ios-basketball-outline-3" ></i>
+          </a>
         </div>
-        <!--
-        <a class="item item-avatar-left item-player" href="#">
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-          <h2>Venkman</h2>
-          <p>2 pontos</p>
-        </a>
-        <a class="item item-avatar-right item-player" href="#">
-          <h2>Venkman</h2>
-          <p>-</p>
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-        <a class="item item-avatar-left item-player" href="#">
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-          <h2>Venkman</h2>
-          <p>2 pontos</p>
-        </a>
-        </a>
-        <a class="item item-avatar-right item-player" href="#">
-          <h2>Venkman</h2>
-          <p>-</p>
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-        </a>
-        <a class="item item-avatar-left item-player" href="#">
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-          <h2>Venkman</h2>
-          <p>2 pontos</p>
-        </a>
-        <a class="item item-avatar-right item-player" href="#">
-          <h2>Venkman</h2>
-          <p>-</p>
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-        </a>
-        <a class="item item-avatar-left item-player" href="#">
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-          <h2>Venkman</h2>
-          <p>2 pontos</p>
-        </a>
-        <a class="item item-avatar-right item-player" href="#">
-          <h2>Venkman</h2>
-          <p>-</p>
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-        </a>
-        <a class="item item-avatar-left item-player" href="#">
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-          <h2>Venkman</h2>
-          <p>-</p>
-        </a>
-        <a class="item item-avatar-right item-player" href="#">
-          <h2>Venkman</h2>
-          <p>-</p>
-          <img class="item-image" src="http://api.randomuser.me/portraits/med/men/24.jpg">
-        </a>
-        -->
-        <a class="item item-icon-left item-player" href="#/teams/{{game.homeTeam.id}}/add-player">
-          <i class="icon ion-plus"></i>
-          Add player...
-        </a>
-        <a class="item item-icon-right item-player" href="#/teams/{{game.awayTeam.id}}/add-player">
-          <i class="icon ion-plus"></i>
-          Add player...
-        </a>
       </div>
-      <div class="row row-center">
-        <div class="col5">id: {{game.id}}</div>
-      </div>
-      <div class="row row-center">
-        <div class="col5">rev: {{game.rev}}</div>
-      </div>
+      <div class="row row-center scoreboard">
+        <span class="col col-50 points">{{game.awayTeam.points}}</span>
+        <div class="col col-50">
+          <a class="col-33 team" ng-click="score(game.awayTeam, 2)">
+            <i class="icon icon_ios-basketball-2" ></i>
+          </a>
+          <a class="col-33 team" ng-click="score(game.awayTeam, 3)">
+            <i class="icon icon_ios-basketball-3" ></i>
+          </a>
+        </div>
   </ion-content>
-  <script id="contact-modal.html" type="text/ng-template">
-    <div class="modal score-modal">
-      <header>
-        <h1 class="title">Score</h1>
-      </header>
-      <div class="content">
-        {{ modal.team.name}}
-        <input type="number" value="0" ng-model="modal.team.points" />
-        <buton class="button button-outilined button-positive" ng-click="score(modal.team, 2)">
-          + 2
-        </buton>
-        <buton class="button button-outilined button-balanced" ng-click="score(modal.team, 3)">
-          + 3
-        </buton>
-      </div>
-      <div class="actions">
-        <a href="#close" ng-click="closeModal()">Close</a>
-      </div>
-    </div>
-  </script>
 </ion-view>

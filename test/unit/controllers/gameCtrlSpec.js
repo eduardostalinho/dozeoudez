@@ -61,19 +61,12 @@ describe(Controller, function () {
     describe("#score()", function () {
       beforeEach(function () {
         $scope.game.status = "running";
-        $scope.closeModal = sinon.stub();
       });
 
       it("adds points to a team", function () {
         var team = { points: 3 };
         $scope.score(team, 2);
         expect(team.points).to.equal(5);
-      });
-
-      it("close modal", function () {
-        var team = { points: 3 };
-        $scope.score(team, 2);
-        expect($scope.closeModal).to.have.been.called;
       });
 
       context("when match is paused", function () {
